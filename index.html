@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>AVANTI</title>
+
+<meta name="theme-color" content="#080808">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AVANTI">
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+    --black: #080808;
+    --dark: #101010;
+    --card: #151515;
+    --card2: #1c1c1c;
+    --white: #f5f5f2;
+    --gray: #999995;
+    --lightgray: #c8c8c2;
+    --line: rgba(255,255,255,.09);
+    --gold: #c9a45b;
+}
+
+body {
+    background: var(--black);
+    color: var(--white);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                 "Helvetica Neue", Arial, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+#loginScreen {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+    background:
+        radial-gradient(circle at 50% 15%, rgba(201,164,91,.12), transparent 30%),
+        var(--black);
+}
+
+.login-box {
+    width: 100%;
+    max-width: 420px;
+}
+
+.logo {
+    text-align: center;
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: 7px;
+    margin-bottom: 10px;
+}
+
+.logo-sub {
+    text-align: center;
+    color: var(--gray);
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 55px;
+}
+
+.login-box h1 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.login-box p {
+    color: var(--gray);
+    margin-bottom: 28px;
+}
+
+.input {
+    width: 100%;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 15px;
+    color: white;
+    padding: 17px;
+    margin-bottom: 13px;
+    outline: none;
+}
+
+.input:focus {
+    border-color: rgba(201,164,91,.65);
+}
+
+.primary-btn {
+    width: 100%;
+    padding: 17px;
+    border-radius: 15px;
+    background: var(--white);
+    color: #080808;
+    font-weight: 700;
+    margin-top: 8px;
+}
+
+.primary-btn:active {
+    transform: scale(.98);
+}
+
+.demo {
+    text-align: center;
+    color: #666;
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+/* =========================
+   APP
+========================= */
+
+#app {
+    display: none;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-bottom: 95px;
+}
+
+.page {
+    display: none;
+    padding: 22px 18px;
+    animation: fadeIn .25s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(7px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* HEADER */
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+}
+
+.small-logo {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 4px;
+}
+
+.avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #292929, #111);
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.greeting {
+    margin-bottom: 22px;
+}
+
+.greeting span {
+    color: var(--gray);
+    font-size: 14px;
+}
+
+.greeting h1 {
+    font-size: 31px;
+    margin-top: 4px;
+}
+
+.hero-card {
+    border-radius: 24px;
+    padding: 25px;
+    background:
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02)),
+        #111;
+    border: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 17px;
+}
+
+.hero-card:after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    right: -90px;
+    top: -90px;
+    border-radius: 50%;
+    background: rgba(201,164,91,.12);
+}
+
+.hero-label {
+    color: var(--gray);
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.hero-number {
+    font-size: 46px;
+    font-weight: 800;
+}
+
+.hero-text {
+    color: var(--gray);
+    margin-top: 7px;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 28px 0 13px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.stat-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 18px;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.stat-label {
+    color: var(--gray);
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.quick-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.quick {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 18px;
+    min-height: 105px;
+}
+
+.quick-icon {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.quick strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.quick span {
+    color: var(--gray);
+    font-size: 12px;
+}
+
+/* =========================
+   REQUESTS
+========================= */
+
+.request {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 18px;
+    margin-bottom: 12px;
+}
+
+.request-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 13px;
+}
+
+.request-title {
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.status {
+    font-size: 11px;
+    padding: 6px 9px;
+    border-radius: 20px;
+    background: rgba(201,164,91,.13);
+    color: var(--gold);
+}
+
+.request-info {
+    color: var(--gray);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* =========================
+   CHAT
+========================= */
+
+.chat-user {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.chat-avatar {
+    width: 47px;
+    height: 47px;
+    border-radius: 50%;
+    background: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.chat-content {
+    flex: 1;
+}
+
+.chat-name {
+    font-weight: 700;
+}
+
+.chat-preview {
+    color: var(--gray);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.chat-time {
+    color: #666;
+    font-size: 11px;
+}
+
+/* =========================
+   PARTNERS
+========================= */
+
+.partner {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 18px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.partner-logo {
+    width: 52px;
+    height: 52px;
+    border-radius: 15px;
+    background: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+}
+
+.partner-info {
+    flex: 1;
+}
+
+.partner-name {
+    font-weight: 700;
+}
+
+.partner-category {
+    color: var(--gray);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile-head {
+    text-align: center;
+    margin: 10px 0 30px;
+}
+
+.profile-avatar {
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    margin: auto;
+    background: linear-gradient(135deg, #292929, #111);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 800;
+    border: 1px solid var(--line);
+}
+
+.profile-head h2 {
+    margin-top: 13px;
+}
+
+.profile-head p {
+    color: var(--gray);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.setting {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 17px;
+    border-radius: 16px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.setting span {
+    color: var(--gray);
+}
+
+/* =========================
+   BOTTOM NAV
+========================= */
+
+.bottom-nav {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    height: 70px;
+    border-radius: 23px;
+    background: rgba(20,20,20,.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    z-index: 100;
+}
+
+.nav-btn {
+    background: transparent;
+    color: #777;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.nav-btn.active {
+    color: var(--white);
+}
+
+.nav-icon {
+    font-size: 20px;
+}
+
+.nav-label {
+    font-size: 9px;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.72);
+    z-index: 200;
+    align-items: flex-end;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-box {
+    background: #151515;
+    width: 100%;
+    border-radius: 27px 27px 0 0;
+    padding: 25px 20px 35px;
+    border-top: 1px solid var(--line);
+}
+
+.modal-title {
+    font-size: 21px;
+    font-weight: 800;
+    margin-bottom: 18px;
+}
+
+.close-btn {
+    width: 100%;
+    background: #262626;
+    color: white;
+    padding: 15px;
+    border-radius: 14px;
+    margin-top: 8px;
+}
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media (min-width: 700px) {
+    .page {
+        max-width: 700px;
+        margin: auto;
+    }
+
+    .bottom-nav {
+        max-width: 680px;
+        margin: auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     LOGIN
+========================= -->
+
+<section id="loginScreen">
+
+    <div class="login-box">
+
+        <div class="logo">AVANTI</div>
+
+        <div class="logo-sub">
+            EINFACH. WEITER.
+        </div>
+
+        <h1>Willkommen zurück.</h1>
+
+        <p>Melde dich bei deinem AVANTI-Konto an.</p>
+
+        <input
+            id="email"
+            class="input"
+            type="email"
+            placeholder="E-Mail-Adresse"
+        >
+
+        <input
+            id="password"
+            class="input"
+            type="password"
+            placeholder="Passwort"
+        >
+
+        <button class="primary-btn" onclick="login()">
+            Anmelden
+        </button>
+
+        <div class="demo">
+            Demo-Modus · beliebige Zugangsdaten
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     APP
+========================= -->
+
+<div id="app">
+
+    <!-- HOME -->
+
+    <section id="home" class="page active">
+
+        <div class="topbar">
+            <div class="small-logo">AVANTI</div>
+            <div class="avatar">AZ</div>
+        </div>
+
+        <div class="greeting">
+            <span>Guten Morgen</span>
+            <h1>Alessio.</h1>
+        </div>
+
+        <div class="hero-card">
+
+            <div class="hero-label">
+                Aktive AVANTI-Anfragen
+            </div>
+
+            <div class="hero-number">
+                3
+            </div>
+
+            <div class="hero-text">
+                Wir kümmern uns darum.
+            </div>
+
+        </div>
+
+        <div class="stats">
+
+            <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Offene Anfragen</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Neue Nachrichten</div>
+            </div>
+
+        </div>
+
+        <div class="section-title">
+            Schnellzugriff
+        </div>
+
+        <div class="quick-grid">
+
+            <button class="quick" onclick="showPage('requests')">
+                <div class="quick-icon">📋</div>
+                <strong>Anfrage</strong>
+                <span>Neue Anfrage erstellen</span>
+            </button>
+
+            <button class="quick" onclick="showPage('chat')">
+                <div class="quick-icon">💬</div>
+                <strong>Nachrichten</strong>
+                <span>Mit AVANTI schreiben</span>
+            </button>
+
+            <button class="quick" onclick="showPage('partners')">
+                <div class="quick-icon">🤝</div>
+                <strong>Partner</strong>
+                <span>AVANTI Partner entdecken</span>
+            </button>
+
+            <button class="quick" onclick="openModal()">
+                <div class="quick-icon">＋</div>
+                <strong>Service</strong>
+                <span>Service anfragen</span>
+            </button>
+
+        </div>
+
+        <div class="section-title">
+            Aktuelle Vorgänge
+        </div>
+
+        <div class="request">
+
+            <div class="request-top">
+                <div class="request-title">
+                    Elektriker gesucht
+                </div>
+
+                <div class="status">
+                    In Bearbeitung
+                </div>
+            </div>
+
+            <div class="request-info">
+                Anfrage #AV-1048<br>
+                Solingen · Heute
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ANFRAGEN -->
+
+    <section id="requests" class="page">
+
+        <div class="topbar">
+            <div>
+                <div class="small-logo">Anfragen</div>
+            </div>
+        </div>
+
+        <div class="request">
+
+            <div class="request-top">
+                <div class="request-title">
+                    Elektriker gesucht
+                </div>
+
+                <div class="status">
+                    Offen
+                </div>
+            </div>
+
+            <div class="request-info">
+                Installation und Prüfung einer Elektroanlage.<br>
+                Solingen · Erstellt heute
+            </div>
+
+        </div>
+
+        <div class="request">
+
+            <div class="request-top">
+                <div class="request-title">
+                    Versorgungskonzept
+                </div>
+
+                <div class="status">
+                    Planung
+                </div>
+            </div>
+
+            <div class="request-info">
+                Laufende Versorgung für ein Unternehmen.<br>
+                AVANTI · In Planung
+            </div>
+
+        </div>
+
+        <div class="request">
+
+            <div class="request-top">
+                <div class="request-title">
+                    Veranstaltung
+                </div>
+
+                <div class="status">
+                    Partner gesucht
+                </div>
+            </div>
+
+            <div class="request-info">
+                Planung und Organisation einer Veranstaltung.
+            </div>
+
+        </div>
+
+        <button class="primary-btn" onclick="openModal()">
+            + Neue Anfrage
+        </button>
+
+    </section>
+
+
+    <!-- CHAT -->
+
+    <section id="chat" class="page">
+
+        <div class="topbar">
+            <div class="small-logo">Nachrichten</div>
+        </div>
+
+        <div class="chat-user" onclick="openChat('AVANTI Team')">
+
+            <div class="chat-avatar">
+                A
+            </div>
+
+            <div class="chat-content">
+                <div class="chat-name">
+                    AVANTI Team
+                </div>
+
+                <div class="chat-preview">
+                    Wir kümmern uns um deine Anfrage.
+                </div>
+            </div>
+
+            <div class="chat-time">
+                10:24
+            </div>
+
+        </div>
+
+        <div class="chat-user" onclick="openChat('Salvatore Abbate')">
+
+            <div class="chat-avatar">
+                SA
+            </div>
+
+            <div class="chat-content">
+                <div class="chat-name">
+                    Salvatore Abbate
+                </div>
+
+                <div class="chat-preview">
+                    Alles klar, machen wir so.
+                </div>
+            </div>
+
+            <div class="chat-time">
+                Gestern
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PARTNER -->
+
+    <section id="partners" class="page">
+
+        <div class="topbar">
+            <div class="small-logo">Partner</div>
+        </div>
+
+        <div class="partner">
+
+            <div class="partner-logo">
+                SA
+            </div>
+
+            <div class="partner-info">
+                <div class="partner-name">
+                    Salvatore Abbate
+                </div>
+
+                <div class="partner-category">
+                    Versicherungen · Immobilien · Kredite
+                </div>
+            </div>
+
+        </div>
+
+        <div class="partner">
+
+            <div class="partner-logo">
+                TP
+            </div>
+
+            <div class="partner-info">
+                <div class="partner-name">
+                    Tony Pisano
+                </div>
+
+                <div class="partner-category">
+                    Mobiler Pizzabäcker · Catering
+                </div>
+            </div>
+
+        </div>
+
+        <div class="partner">
+
+            <div class="partner-logo">
+                HG
+            </div>
+
+            <div class="partner-info">
+                <div class="partner-name">
+                    Hofgarten Solingen
+                </div>
+
+                <div class="partner-category">
+                    Shopping · Freizeit · Events
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROFIL -->
+
+    <section id="profile" class="page">
+
+        <div class="topbar">
+            <div class="small-logo">Profil</div>
+        </div>
+
+        <div class="profile-head">
+
+            <div class="profile-avatar">
+                AZ
+            </div>
+
+            <h2>Alessio Zecchini</h2>
+
+            <p>AVANTI Kunde</p>
+
+        </div>
+
+        <div class="setting">
+            <strong>Persönliche Daten</strong>
+            <span>›</span>
+        </div>
+
+        <div class="setting">
+            <strong>Benachrichtigungen</strong>
+            <span>›</span>
+        </div>
+
+        <div class="setting">
+            <strong>Sicherheit</strong>
+            <span>›</span>
+        </div>
+
+        <div class="setting">
+            <strong>Über AVANTI</strong>
+            <span>›</span>
+        </div>
+
+        <button
+            class="primary-btn"
+            style="margin-top:20px;"
+            onclick="logout()"
+        >
+            Abmelden
+        </button>
+
+    </section>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="bottom-nav">
+
+        <button class="nav-btn active" onclick="showPage('home', this)">
+            <div class="nav-icon">⌂</div>
+            <div class="nav-label">Home</div>
+        </button>
+
+        <button class="nav-btn" onclick="showPage('requests', this)">
+            <div class="nav-icon">▤</div>
+            <div class="nav-label">Anfragen</div>
+        </button>
+
+        <button class="nav-btn" onclick="showPage('chat', this)">
+            <div class="nav-icon">◌</div>
+            <div class="nav-label">Chat</div>
+        </button>
+
+        <button class="nav-btn" onclick="showPage('partners', this)">
+            <div class="nav-icon">♧</div>
+            <div class="nav-label">Partner</div>
+        </button>
+
+        <button class="nav-btn" onclick="showPage('profile', this)">
+            <div class="nav-icon">◎</div>
+            <div class="nav-label">Profil</div>
+        </button>
+
+    </nav>
+
+</div>
+
+
+<!-- =========================
+     MODAL
+========================= -->
+
+<div id="modal" class="modal" onclick="closeModal(event)">
+
+    <div class="modal-box" onclick="event.stopPropagation()">
+
+        <div class="modal-title">
+            Neue AVANTI Anfrage
+        </div>
+
+        <input
+            class="input"
+            placeholder="Worum geht es?"
+        >
+
+        <input
+            class="input"
+            placeholder="Ort"
+        >
+
+        <button
+            class="primary-btn"
+            onclick="submitRequest()"
+        >
+            Anfrage senden
+        </button>
+
+        <button
+            class="close-btn"
+            onclick="closeModal()"
+        >
+            Abbrechen
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function login() {
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    if (!email || !password) {
+        alert("Bitte E-Mail und Passwort eingeben.");
+        return;
+    }
+
+    document.getElementById("loginScreen").style.display = "none";
+    document.getElementById("app").style.display = "block";
+
+    localStorage.setItem("avantiLoggedIn", "true");
+}
+
+
+function logout() {
+
+    localStorage.removeItem("avantiLoggedIn");
+
+    location.reload();
+}
+
+
+function showPage(pageId, button) {
+
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
+
+    const page = document.getElementById(pageId);
+
+    if (page) {
+        page.classList.add("active");
+    }
+
+    document.querySelectorAll(".nav-btn").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    if (button) {
+        button.classList.add("active");
+    }
+}
+
+
+function openModal() {
+
+    document.getElementById("modal").classList.add("show");
+}
+
+
+function closeModal(event) {
+
+    if (
+        !event ||
+        event.target === document.getElementById("modal")
+    ) {
+        document.getElementById("modal").classList.remove("show");
+    }
+}
+
+
+function submitRequest() {
+
+    alert("Deine Anfrage wurde vorbereitet. Die echte Übermittlung verbinden wir als Nächstes mit der AVANTI-Datenbank.");
+
+    closeModal();
+}
+
+
+function openChat(name) {
+
+    alert(
+        "Chat mit " +
+        name +
+        "\n\nDie echte Chat-Funktion verbinden wir im nächsten Schritt mit der AVANTI-Datenbank."
+    );
+}
+
+
+/* Bereits eingeloggt? */
+
+if (localStorage.getItem("avantiLoggedIn") === "true") {
+
+    document.getElementById("loginScreen").style.display = "none";
+    document.getElementById("app").style.display = "block";
+
+}
+
+</script>
+
+</body>
+</html>
